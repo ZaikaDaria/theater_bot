@@ -1,14 +1,15 @@
 import requests
 import telebot
+import os
 
 from bs4 import BeautifulSoup
 from dataclasses import dataclass
-from dotenv import dotenv_values
+from dotenv import load_dotenv
 
-config = dotenv_values(".env")
+load_dotenv()
 
 BASE_URL = "https://ft.org.ua/ua/performance/tartyuf"
-BOT_TOKEN = config["BOT_TOKEN"]
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
