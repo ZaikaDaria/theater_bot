@@ -7,7 +7,7 @@ from dotenv import dotenv_values
 
 config = dotenv_values(".env")
 
-BASE_URL="https://ft.org.ua/ua/performance/tartyuf"
+BASE_URL = "https://ft.org.ua/ua/performance/tartyuf"
 BOT_TOKEN = config["BOT_TOKEN"]
 
 bot = telebot.TeleBot(BOT_TOKEN)
