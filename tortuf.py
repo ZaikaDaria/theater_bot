@@ -43,9 +43,16 @@ def send_message_to_telegram(message):
     bot.reply_to(message, f"Тортюф: дата останнього показу: {str(perf_date)}")
 
 
-# def echo_all(message):
-#     bot.reply_to(message, message.text)
+def start_bot():
+    bot.polling()
 
 
 if __name__ == "__main__":
-    bot.infinity_polling()
+    start_bot()
+#
+# # def echo_all(message):
+# #     bot.reply_to(message, message.text)
+#
+#
+# if __name__ == "__main__":
+#     bot.infinity_polling()
