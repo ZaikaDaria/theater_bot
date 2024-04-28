@@ -5,6 +5,7 @@ import os
 from bs4 import BeautifulSoup
 from dataclasses import dataclass
 from dotenv import load_dotenv
+from threading import Thread
 
 load_dotenv()
 
@@ -48,7 +49,8 @@ def start_bot():
 
 
 if __name__ == "__main__":
-    start_bot()
+    bot_thread = Thread(target=start_bot)
+    bot_thread.start()
 #
 # # def echo_all(message):
 # #     bot.reply_to(message, message.text)
