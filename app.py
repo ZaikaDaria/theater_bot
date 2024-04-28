@@ -5,6 +5,7 @@ from flask import Flask
 app = Flask(__name__)
 
 BASE_URL = "https://ft.org.ua/ua/performance/tartyuf"
+PORT = 5100
 
 
 class Tortuf:
@@ -40,4 +41,4 @@ def last_performance():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=PORT)
