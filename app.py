@@ -39,14 +39,24 @@ def get_website_data():
 @bot.message_handler(commands=["list", ])
 def send_message_to_telegram(message):
     performances = get_website_data()
-    bot.reply_to(message, f"Тортюф: список всіх показів: \n{performances}")
+    if performances:
+        performance_str = "\n".join([f"{perf.performance_date} [Купити квитки]({perf.link})" for perf in performances])
+        bot.reply_to(message, f"Тортюф: список всіх показів:\n{performance_str}", parse_mode="Markdown")
 
 
-@bot.message_handler(commands=["last", ])
+@bot.message_handler(commands=["last"])
 def send_message_to_telegram(message):
     performances = get_website_data()
-    perf_date = performances[-1].performance_date
-    bot.reply_to(message, f"Тортюф: дата останнього показу: {str(perf_date)}")
+    if performances:
+        last_performance = performances[-1]
+        perf_date = last_performance.performance_date
+        link = last_performance.link
+        if link:
+            bot.reply_to(message, f"Тортюф: дата останнього показу: \n{perf_date} [Купити квитки]({link})", parse_mode="Markdown")
+        else:
+            bot.reply_to(message, f"Тортюф: дата останнього показу: {perf_date}\nПосилання на квитки відсутнє.")
+    else:
+        bot.reply_to(message, "Немає даних про покази.")
 
 
 if __name__ == "__main__":
