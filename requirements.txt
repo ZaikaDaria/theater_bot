@@ -17,4 +17,4 @@ telebot==0.0.5
 telegram==0.0.1
 urllib3==2.2.1
 
-Flask~=2.2.2
+Flask==2.2.2
