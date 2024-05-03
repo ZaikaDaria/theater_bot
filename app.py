@@ -36,7 +36,7 @@ def get_website_data():
         return performance_list
 
 
-@bot.message_handler(commands=["list", ])
+@bot.message_handler(commands=["tortuf", ])
 def send_message_to_telegram(message):
     performances = get_website_data()
     if performances:
@@ -52,7 +52,8 @@ def send_message_to_telegram(message):
         perf_date = last_performance.performance_date
         link = last_performance.link
         if link:
-            bot.reply_to(message, f"Тортюф: дата останнього показу: \n{perf_date} [Купити квитки]({link})", parse_mode="Markdown")
+            bot.reply_to(message, f"Тортюф: дата останнього показу: \n{perf_date} [Купити квитки]({link})",
+                         parse_mode="Markdown")
         else:
             bot.reply_to(message, f"Тортюф: дата останнього показу: {perf_date}\nПосилання на квитки відсутнє.")
     else:
@@ -60,5 +61,4 @@ def send_message_to_telegram(message):
 
 
 if __name__ == "__main__":
-    bot.delete_webhook()
     bot.infinity_polling(none_stop=True)
