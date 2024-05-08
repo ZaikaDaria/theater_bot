@@ -11,7 +11,7 @@ load_dotenv()
 
 BASE_URL = "https://ft.org.ua/ua/performance/tartyuf"
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-CHAT_ID = os.getenv("CHAT_ID")
+# CHAT_ID = os.getenv("CHAT_ID")
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
@@ -81,8 +81,8 @@ def send_last_performance(message):
         bot.reply_to(message, "Немає даних про покази.")
 
 
-def send_start_message():
-    bot.send_message(chat_id=CHAT_ID, text="/start")
+# def send_start_message():
+#     bot.send_message(chat_id=CHAT_ID, text="/start")
 
 
 @bot.message_handler(commands=["start"])
@@ -105,7 +105,7 @@ def handle_query(call):
 
 
 if __name__ == "__main__":
-    scheduler = BackgroundScheduler()
-    scheduler.add_job(send_start_message, "interval", minutes=5)
-    scheduler.start()
+    # scheduler = BackgroundScheduler()
+    # scheduler.add_job(send_start_message, "interval", minutes=5)
+    # scheduler.start()
     bot.infinity_polling(none_stop=True)
