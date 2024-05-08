@@ -106,6 +106,6 @@ def handle_query(call):
 
 if __name__ == "__main__":
     scheduler = BackgroundScheduler()
-    scheduler.add_job(send_start_message, "cron", day_of_week="mon-sun", minutes=5)
+    scheduler.add_job(send_start_message, "interval", minutes=5)
     scheduler.start()
     bot.infinity_polling(none_stop=True)
